@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — pre-token protocols ranked by implied launch value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div>
+      <h1>Launch Radar</h1>
+      <p class="tag">Protocols that record no token yet, ranked by what their launch would be worth — and how to farm each one.</p>
+    </div>
+  </div>
+  <p class="meta" id="meta">Loading the snapshot…</p>
+</header>
+
+<section class="method" id="method">
+  <h2>How a launch is valued</h2>
+  <p class="formula">Implied value = TVL &times; <strong>category multiple</strong> &times; <strong>momentum</strong> &times; <strong>seasoning</strong> &times; <strong>breadth</strong></p>
+  <p>The category multiple is not a constant: it is the median market-cap-to-TVL ratio of the
+  category&rsquo;s own tokenised protocols <em>in this same snapshot</em>, shrunk toward the global
+  median by peer count, pulled further toward it when a category has fewer than three peers, and
+  clamped to 0.02&ndash;2.00. Momentum reads the 7-day TVL change (capped &minus;50% to +100%, worth
+  at most &times;1.50); seasoning reads how long DefiLlama has tracked the protocol with no token
+  recorded (up to &times;1.20 at four years); breadth adds 3% per extra chain, to &times;1.21.
+  Open any row to recompute its value factor by factor.</p>
+  <div id="multiples"></div>
+  <p class="apart">Set apart, never ranked as launches: wrapped, staked and bridged
+  <strong>products</strong> of tokens that already trade, and the <strong>live tokens</strong> themselves,
+  shown at the market&rsquo;s own values on their own tabs. The snapshot is DefiLlama&rsquo;s record:
+  a protocol here <em>records</em> no token; that is a statement about the record, not proof none exists.</p>
+</section>
+
+<nav class="views" id="views" aria-label="Views">
+  <button data-view="board" class="on">Launch board</button>
+  <button data-view="products">Products set aside</button>
+  <button data-view="live">Already trading</button>
+</nav>
+
+<section class="controls" id="controls">
+  <label>Search <input id="q" type="search" placeholder="protocol or category"></label>
+  <label>Category <select id="cat"></select></label>
+  <label>Chain <select id="chain"></select></label>
+  <label>Show
+    <select id="tier">
+      <option value="all">All candidates</option>
+      <option value="watchlist">Watchlist only</option>
+      <option value="early">Early (below the $50M floor)</option>
+    </select>
+  </label>
+  <span class="count" id="count"></span>
+</section>
+
+<main id="view" tabindex="-1"></main>
+
+<footer>
+  <p>Implied values are this radar&rsquo;s own model claims, derived only from the snapshot&rsquo;s
+  figures; they are not predictions that a token will be issued. Farm plans are starting points:
+  costs are estimates at typical fees, and a position in a pre-token protocol can lose money.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
